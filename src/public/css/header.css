@@ -1,0 +1,66 @@
+.c-button--header-sell {
+    width: 100px;
+    height: 49px;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 49px;
+}
+
+.header {
+    background-color: #000000;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.header__inner {
+  max-width: 1512px;
+  width: 100%;
+  padding: 0 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.header__logo-img {
+    width: 370px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.header__search {
+    width: 563px;
+}
+
+.header__search-input {
+    width: 100%;
+    height: 49px;
+    background: #ffffff;
+    border-radius: 3px;
+    border: none;
+    padding: 0 15px;
+    font-size: 22px;
+}
+
+.header__search-input::placeholder {
+  padding: 0 20px;
+  color: #000000;
+  font-size: 22px;
+  opacity: 1;
+}
+
+.header__nav-list {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.header__nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 22px;
+}

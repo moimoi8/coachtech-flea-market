@@ -1,0 +1,207 @@
+.register-form,
+.login-form,
+.profile-setup,
+.item-sell__inner {
+  background-color: #ffffff;
+  width: 680px;
+  margin: 20px auto 50px;
+  padding: 40px 100px;
+  box-sizing: border-box;
+}
+
+.profile-setup,
+.item-sell__inner {
+  margin-top: 0;
+}
+
+
+.register-form__heading,
+.login-form__heading,
+.profile-setup__heading,
+.item-sell__title {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.profile-setup__heading {
+  margin-bottom: 50px;
+}
+
+.register-form__group,
+.login-form__group,
+.profile-setup__group {
+  margin-bottom: 10px;
+}
+
+.register-form__label,
+.login-form__label,
+.profile-setup__label {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.register-form__input,
+.login-form__input,
+.profile-setup__input {
+  width: 100%;
+  height: 57px;
+  padding: 0 10px;
+  border: 1px solid #5f5f5f;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.register-form__btn-submit,
+.login-form__btn-submit,
+.profile-setup__btn-submit,
+.item-sell__btn-submit {
+  width: 100%;
+  height: 50px;
+  background-color: #ff5555;
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-form__btn-submit:hover,
+.register-form__btn-submit:hover,
+.profile-setup__btn-submit:hover {
+  opacity: 0.8;
+}
+
+.register-form__btn-wrap {
+  margin-top: 90px;
+}
+
+.login-form__btn-wrap,
+.profile-setup__btn-wrap {
+  margin-top: 50px;
+}
+
+.register-form__link,
+.login-form__link {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.register-form__link a,
+.login-form__link a {
+  color: #0073cc;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.register-form__error-message,
+.login-form__error-message,
+.profile-setup__error {
+  color: #ff0000;
+  font-size: 15px;
+  margin-top: 5px;
+  margin-bottom: 0;
+  min-height: 20px;
+}
+
+.profile-setup__image-group {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 80px;
+}
+
+.profile-setup__image-preview {
+  width: 150px;
+  height: 150px;
+  background-color: #d9d9d9;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.profile-setup__image-label,
+.mypage__image-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 179px;
+  height: 49px;
+  background-color: #ffffff;
+  color: #ff5555;
+  border: 2px solid #ff5555;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.profile-setup__image-label:hover {
+  background-color: #ff5555;
+  color: #ffffff;
+}
+
+.profile-setup__group--username {
+  margin-bottom: 62px;
+}
+
+.mypage {
+  max-width: 1512px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.mypage__inner {
+  width: 100%;
+}
+
+.mypage__user-info {
+  display: flex;
+  justify-content: center;
+  padding: 158px 0 150px 70px;
+}
+
+.mypage__user-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 57px;
+  width: 1100px;
+  margin: 0 auto;
+  padding-right: 0;
+}
+
+.mypage__image-label {
+  width: 310px;
+  height: 59px;
+  text-decoration: none;
+  margin-left: auto;
+
+}
+
+.mypage__username {
+  font-size: 36px;
+  font-weight: bold;
+  color: #000000;
+  margin: 0;
+  text-align: center;
+}
+
+.mypage__grid {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 106px 69px 0;
+  column-gap: 68px;
+  row-gap: 76px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.mypage__grid .item-list__card {
+  width: calc((100% - (68.5px * 3)) / 4);
+}
