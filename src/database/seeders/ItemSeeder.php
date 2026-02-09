@@ -21,7 +21,8 @@ class ItemSeeder extends Seeder
         'brand' => 'Rolax',
         'condition' => '良好',
         'description' => 'スタイリッシュなデザインのメンズ腕時計',
-        'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Armani+Mens+Clock.jpg'
+        'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Armani+Mens+Clock.jpg',
+        'category_ids' => [1, 5],
       ],
       [
         'name' => 'HDD',
@@ -29,7 +30,8 @@ class ItemSeeder extends Seeder
         'brand' => '西芝',
         'condition' => '目立った傷や汚れなし',
         'description' => '高速で信頼性の高いハードディスク',
-        'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/HDD+Hard+Disk.jpg'
+        'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/HDD+Hard+Disk.jpg',
+        'category_ids' => [2],
       ],
       [
         'name' => '玉ねぎ3束',
@@ -37,7 +39,8 @@ class ItemSeeder extends Seeder
         'brand' => 'null',
         'condition' => 'やや傷や汚れあり',
         'description' => '新鮮な玉ねぎ3束のセット',
-        'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/iLoveIMG+d.jpg'
+        'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/iLoveIMG+d.jpg',
+        'category_ids' => [10],
       ],
       [
         'name' => '革靴',
@@ -45,7 +48,8 @@ class ItemSeeder extends Seeder
         'brand' => 'null',
         'condition' => '状態が悪い',
         'description' => 'クラシックなデザインの革靴',
-        'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Leather+Shoes+Product+Photo.jpg'
+        'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Leather+Shoes+Product+Photo.jpg',
+        'category_ids' => [1, 5],
       ],
       [
         'name' => 'ノートPC',
@@ -53,7 +57,8 @@ class ItemSeeder extends Seeder
         'brand' => 'null',
         'condition' => '良好',
         'description' => '高性能なノートパソコン',
-        'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Living+Room+Laptop.jpg'
+        'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Living+Room+Laptop.jpg',
+        'category_ids' => [2],
       ],
       [
         'name' => 'マイク',
@@ -61,7 +66,8 @@ class ItemSeeder extends Seeder
         'brand' => 'null',
         'condition' => '目立った傷や汚れなし',
         'description' => '高音質のレコーディング用マイク',
-        'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Music+Mic+4632231.jpg'
+        'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Music+Mic+4632231.jpg',
+        'category_ids' => [2],
       ],
       [
         'name' => 'ショルダーバッグ',
@@ -69,7 +75,8 @@ class ItemSeeder extends Seeder
         'brand' => 'null',
         'condition' => 'やや傷や汚れあり',
         'description' => 'おしゃれなショルダーバッグ',
-        'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Purse+fashion+pocket.jpg'
+        'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Purse+fashion+pocket.jpg',
+        'category_ids' => [1, 4],
       ],
       [
         'name' => 'タンブラー',
@@ -77,7 +84,8 @@ class ItemSeeder extends Seeder
         'brand' => 'null',
         'condition' => '状態が悪い',
         'description' => '使いやすいタンブラー',
-        'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Tumbler+souvenir.jpg'
+        'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Tumbler+souvenir.jpg',
+        'category_ids' => [10],
       ],
       [
         'name' => 'コーヒーミル',
@@ -85,7 +93,8 @@ class ItemSeeder extends Seeder
         'brand' => 'starbacks',
         'condition' => '良好',
         'description' => '手動のコーヒーミル',
-        'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Waitress+with+Coffee+Grinder.jpg'
+        'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Waitress+with+Coffee+Grinder.jpg',
+        'category_ids' => [10],
       ],
       [
         'name' => 'メイクセット',
@@ -93,12 +102,13 @@ class ItemSeeder extends Seeder
         'brand' => 'null',
         'condition' => '目立った傷や汚れなし',
         'description' => '便利なメイクアップセット',
-        'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/%E5%A4%96%E5%87%BA%E3%83%A1%E3%82%A4%E3%82%AF%E3%82%A2%E3%83%83%E3%83%95%E3%82%9A%E3%82%BB%E3%83%83%E3%83%88.jpg'
+        'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/%E5%A4%96%E5%87%BA%E3%83%A1%E3%82%A4%E3%82%AF%E3%82%A2%E3%83%83%E3%83%95%E3%82%9A%E3%82%BB%E3%83%83%E3%83%88.jpg',
+        'category_ids' => [6],
       ],
     ];
 
     foreach ($items as $item) {
-      Item::updateOrCreate(
+      $itemModel = Item::updateOrCreate(
         ['name' => $item['name']],
         [
           'price' => $item['price'],
@@ -109,6 +119,10 @@ class ItemSeeder extends Seeder
           'user_id' => 1,
         ]
       );
+
+      if (!empty($item['category_ids'])) {
+        $itemModel->categories()->sync($item['category_ids']);
+      }
     }
   }
 }

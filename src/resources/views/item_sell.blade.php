@@ -6,9 +6,9 @@
 @endsection
 
 @section('content')
-<div class="item-sell">
+<div class="l-form-container item-sell">
   <div class="item-sell__inner">
-    <h1 class="item-sell__title">商品の出品</h1>
+    <h1 class="c-form-heading item-sell__title">商品の出品</h1>
 
     <form action="{{ route('item.store') }}" method="POST" enctype="multipart/form-data" class="item-sell__form">
       @csrf
@@ -82,7 +82,7 @@
         </div>
       </div>
 
-      <button type="submit" class="c-button item-sell__btn-submit">出品する</button>
+      <button type="submit" class="c-btn-submit item-sell__btn-submit">出品する</button>
     </form>
   </div>
 </div>

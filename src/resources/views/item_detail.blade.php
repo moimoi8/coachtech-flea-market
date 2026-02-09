@@ -37,7 +37,6 @@
           <div class="item-detail__count">{{ $item->comments->count() }}</div>
         </div>
       </div>
-      <a href="..." class="c-button item-detail__buy-button">購入手続きへ</a>
 
       <div class="item-detail__section">
         <h2 class="item-detail__section-title">商品説明</h2>

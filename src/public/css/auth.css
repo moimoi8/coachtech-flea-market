@@ -1,29 +1,9 @@
-.register-form,
-.login-form,
-.profile-setup,
-.item-sell__inner {
-  background-color: #ffffff;
-  width: 680px;
-  margin: 20px auto 50px;
-  padding: 40px 100px;
-  box-sizing: border-box;
-}
-
 .profile-setup,
 .item-sell__inner {
   margin-top: 0;
 }
 
 
-.register-form__heading,
-.login-form__heading,
-.profile-setup__heading,
-.item-sell__title {
-  font-size: 36px;
-  text-align: center;
-  margin-bottom: 40px;
-  font-weight: bold;
-}
 
 .profile-setup__heading {
   margin-bottom: 50px;
@@ -35,45 +15,12 @@
   margin-bottom: 10px;
 }
 
-.register-form__label,
-.login-form__label,
-.profile-setup__label {
-  display: block;
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 5px;
+.address-edit__group {
+  margin-bottom: 50px;
 }
 
-.register-form__input,
-.login-form__input,
-.profile-setup__input {
-  width: 100%;
-  height: 57px;
-  padding: 0 10px;
-  border: 1px solid #5f5f5f;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.register-form__btn-submit,
-.login-form__btn-submit,
-.profile-setup__btn-submit,
-.item-sell__btn-submit {
-  width: 100%;
-  height: 50px;
-  background-color: #ff5555;
-  color: #ffffff;
-  font-size: 26px;
-  font-weight: bold;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.login-form__btn-submit:hover,
-.register-form__btn-submit:hover,
-.profile-setup__btn-submit:hover {
-  opacity: 0.8;
+.address-edit__btn-submit {
+  margin-top: 30px;
 }
 
 .register-form__btn-wrap {
@@ -96,16 +43,6 @@
   color: #0073cc;
   text-decoration: none;
   font-size: 20px;
-}
-
-.register-form__error-message,
-.login-form__error-message,
-.profile-setup__error {
-  color: #ff0000;
-  font-size: 15px;
-  margin-top: 5px;
-  margin-bottom: 0;
-  min-height: 20px;
 }
 
 .profile-setup__image-group {
@@ -192,16 +129,55 @@
   text-align: center;
 }
 
-.mypage__grid {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 106px 69px 0;
-  column-gap: 68px;
-  row-gap: 76px;
-  width: 100%;
-  box-sizing: border-box;
+.verify-email {
+  padding-top: 237px;
+  text-align: center;
 }
 
-.mypage__grid .item-list__card {
-  width: calc((100% - (68.5px * 3)) / 4);
+.verify-email__inner {
+  display: inline-block;
+  width: 720px;
+}
+
+.verify-email__text {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 62px;
+  color: #000000;
+}
+
+.verify-email__btn-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 52px;
+  width: 257px;
+  height: 69px;
+  background-color: #d9d9d9;
+  color: #000000;
+  font-size: 24px;
+  font-weight: bold;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.verify-email__btn-confirm {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.verify-email__resend-link {
+  background: none;
+  border: none;
+  color: #0073cc;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
 }

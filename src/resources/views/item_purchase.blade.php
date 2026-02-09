@@ -59,7 +59,7 @@
 
       <form action="{{ route('purchase.store', $item->id) }}" method="POST">
         @csrf
-        <button type="submit" class="c-button item-purchase__btn-submit">購入する</button>
+        <button type="submit" class="c-btn-submit item-purchase__btn-submit">購入する</button>
       </form>
     </aside>
   </div>

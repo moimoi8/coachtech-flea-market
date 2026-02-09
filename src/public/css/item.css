@@ -59,6 +59,17 @@
     width: 100%;
     aspect-ratio: 1 / 1;
     overflow: hidden;
+    position: relative;
+}
+
+.item-list__sold-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #ff4b4b;
+    color: #fff;
+    padding: 2px 15px;
+    font-size: 12px;
 }
 
 .item-list__img {
@@ -255,133 +266,8 @@
   font-size: 20px;
 }
 
-.profile-setup,
-.item-sell__inner {
-  margin-top: 0;
-}
-
-.profile-setup__heading {
-  margin-bottom: 50px;
-}
-
-.address-edit__group {
-  margin-bottom: 50px;
-}
-
-
-
 .item-purchase__btn-submit {
   margin-top: 66px;
-}
-
-.address-edit__btn-submit {
-  margin-top: 30px;
-}
-
-.register-form__btn-wrap {
-  margin-top: 90px;
-}
-
-.login-form__btn-wrap,
-.profile-setup__btn-wrap {
-  margin-top: 50px;
-}
-
-.register-form__link,
-.login-form__link {
-  text-align: center;
-  margin-top: 25px;
-}
-
-.register-form__link a,
-.login-form__link a {
-  color: #0073cc;
-  text-decoration: none;
-  font-size: 20px;
-}
-
-.profile-setup__image-group {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  margin-bottom: 80px;
-}
-
-.profile-setup__image-preview {
-  width: 150px;
-  height: 150px;
-  background-color: #d9d9d9;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.profile-setup__image-label,
-.mypage__image-label {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 179px;
-  height: 49px;
-  background-color: #ffffff;
-  color: #ff5555;
-  border: 2px solid #ff5555;
-  border-radius: 10px;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.profile-setup__image-label:hover {
-  background-color: #ff5555;
-  color: #ffffff;
-}
-
-.profile-setup__group--username {
-  margin-bottom: 62px;
-}
-
-.mypage {
-  max-width: 1512px;
-  width: 100%;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-.mypage__inner {
-  width: 100%;
-}
-
-.mypage__user-info {
-  display: flex;
-  justify-content: center;
-  padding: 158px 0 150px 70px;
-}
-
-.mypage__user-group {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  gap: 57px;
-  width: 1100px;
-  margin: 0 auto;
-  padding-right: 0;
-}
-
-.mypage__image-label {
-  width: 310px;
-  height: 59px;
-  text-decoration: none;
-  margin-left: auto;
-
-}
-
-.mypage__username {
-  font-size: 36px;
-  font-weight: bold;
-  color: #000000;
-  margin: 0;
-  text-align: center;
 }
 
 .item-sell__section {
@@ -405,6 +291,18 @@
   display: block;
   font-size: 24px;
   font-weight: bold;
+}
+
+.item-sell__input,
+.item-sell__textarea,
+.item-sell__select {
+  width: 100%;
+  border: 1px solid #5f5f5f;
+  border-radius: 4px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: #fff;
 }
 
 .item-sell__image-upload {
@@ -484,26 +382,6 @@
 .item-sell__select {
   appearance: none;
   -webkit-appearance: none;
-}
-
-.c-select-wrap {
-  position: relative;
-  width: 100%;
-}
-
-/*ここから未反映*/
-.c-select-wrap::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 15px;
-  transform: translateY(-50%);
-  width: 0;
-  height: 0;
-  border-top: 16px solid #5f5f5f;
-  border-right: 9px solid transparent;
-  border-left: 9px solid transparent;
-  pointer-events: none;
 }
 
 .item-sell__price-input::-webkit-outer-spin-button,
@@ -649,57 +527,4 @@
   appearance: none;
   -webkit-appearance: none;
   background-color: #fff;
-}
-
-.verify-email {
-  padding-top: 237px;
-  text-align: center;
-}
-
-.verify-email__inner {
-  display: inline-block;
-  width: 720px;
-}
-
-.verify-email__text {
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 1.2;
-  margin-bottom: 62px;
-  color: #000000;
-}
-
-.verify-email__btn-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto 52px;
-  width: 257px;
-  height: 69px;
-  background-color: #d9d9d9;
-  color: #000000;
-  font-size: 24px;
-  font-weight: bold;
-  border: 1px solid #000000;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.verify-email__btn-confirm {
-  background: none;
-  border: none;
-  outline: none;
-  padding: 0;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
-}
-
-.verify-email__resend-link {
-  background: none;
-  border: none;
-  color: #0073cc;
-  font-size: 20px;
-  cursor: pointer;
-  padding: 0;
 }

@@ -11,8 +11,8 @@
 
     <nav class="item-list__tabs">
       <div class="item-list__tab-group">
-        <a href="/" class="item-list__tab-item">おすすめ</a>
-        <a href="/?tab=mylist" class="item-list__tab-item item-list__tab-item--active">マイリスト</a>
+        <a href="{{ route('item.index') }}" class="item-list__tab-item {{ $tab !== 'mylist' ? 'item-list__tab-item--active' : '' }}">おすすめ</a>
+        <a href="{{ route('item.index', ['tab' => 'mylist']) }}" class="item-list__tab-item {{ $tab === 'mylist' ? 'item-list__tab-item--active' : }}">マイリスト</a>
       </div>
     </nav>
 
@@ -22,6 +22,9 @@
         <a href="{{ route('item.show', ['item_id' => $item->id]) }}" class="item-list__card-link">
           <div class="item-list__image-wrap">
             <img src="{{ $item->img_url }}" alt="{{ $item->name }}" class="item-list__img">
+            @if($item->is_sold)
+            <span class="item-list__sold-label">SOLD</span>
+            @endif
           </div>
           <div class="item-list__card-info">
             <p class="item-list__item-name">{{ $item->name }}</p>

@@ -23,11 +23,7 @@ body {
   margin-right: 10px;
 }
 
-.register-form,
-.login-form,
-.profile-setup,
-.item-sell__inner,
-.address-edit__inner {
+.l-form-container {
   background-color: #ffffff;
   max-width: 760px;
   margin: 20px auto 50px;
@@ -35,37 +31,21 @@ body {
   box-sizing: border-box;
 }
 
-.register-form__heading,
-.login-form__heading,
-.profile-setup__heading,
-.item-sell__title,
-.address-edit__heading {
+.c-form-heading {
   font-size: 36px;
   text-align: center;
   margin-bottom: 40px;
   font-weight: bold;
 }
 
-.register-form__group,
-.login-form__group,
-.profile-setup__group {
-  margin-bottom: 10px;
-}
-
-.register-form__label,
-.login-form__label,
-.profile-setup__label,
-.address-edit__label {
+.c-form-label {
   display: block;
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
-.register-form__input,
-.login-form__input,
-.profile-setup__input,
-.address-edit__input {
+.c-form-input {
   width: 100%;
   max-width: 680px;
   height: 57px;
@@ -75,12 +55,7 @@ body {
   box-sizing: border-box;
 }
 
-.register-form__btn-submit,
-.login-form__btn-submit,
-.profile-setup__btn-submit,
-.item-sell__btn-submit,
-.item-purchase__btn-submit,
-.address-edit__btn-submit {
+.c-btn-submit {
   width: 100%;
   height: 60px;
   background-color: #ff5555;
@@ -92,16 +67,11 @@ body {
   cursor: pointer;
 }
 
-.login-form__btn-submit:hover,
-.register-form__btn-submit:hover,
-.profile-setup__btn-submit:hover {
+.c-btn-submit:hover {
   opacity: 0.8;
 }
 
-.register-form__error-message,
-.login-form__error-message,
-.profile-setup__error,
-.address-edit__error-message {
+.c-form-error {
   color: #ff0000;
   font-size: 15px;
   margin-top: 5px;
@@ -109,14 +79,21 @@ body {
   min-height: 20px;
 }
 
-.item-sell__input,
-.item-sell__textarea,
-.item-sell__select {
+.c-select-wrap {
+  position: relative;
   width: 100%;
-  border: 1px solid #5f5f5f;
-  border-radius: 4px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 16px;
-  background-color: #fff;
+}
+
+.c-select-wrap::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 16px solid #5f5f5f;
+  border-right: 9px solid transparent;
+  border-left: 9px solid transparent;
+  pointer-events: none;
 }
