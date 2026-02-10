@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+<link rel="stylesheet" href="{{ asset('css/item.css') }}">
+<link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+@endsection
+
 @section('content')
 <div class="mypage">
   <div class="mypage__inner">
@@ -7,8 +13,10 @@
     <div class="mypage__user-info">
       <div class="mypage__user-group">
         <div class="profile-setup__image-preview">
-          @if(Auth::user()->img_url)
-          <img src="{{ Auth::user()->img_url ?? '/images/default-icon.png' }}" alt="ユーザーアイコン">
+          @if($user->profile_url)
+          <img src="{{ asset('storage/' . $user->profile_url) }}" alt="プロフィール画像" class="profile-setup__image">
+          @else
+          <div class="profile-setup__image-default"></div>
           @endif
         </div>
         <h2 class="mypage__username">{{ Auth::user()->name }}</h2>
@@ -30,7 +38,7 @@
       <article class="item-list__card">
         <a href="{{ route('item.show', ['item_id' => $item->id]) }}" class="item-list__card-link">
           <div class="item-list__image-wrap">
-            <img src="{{ $item->img_url }}" alt="{{ $item->name }}" class="item-list__img">
+            <img src="{{ asset('storage/' . $item->img_url) }}" alt="{{ $item->name }}" class="item-list__img">
           </div>
           <div class="item-list__card-info">
             <p class="item-list__item-name">{{ $item->name }}</p>

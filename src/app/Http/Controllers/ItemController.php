@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Item;
+use App\Http\Requests\ExhibitionRequest;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -31,12 +32,12 @@ class ItemController extends Controller
   public function create()
   {
     $categories = Category::all();
-    $conditions = collect([
-      (object)['id' => '1', 'content' => '良好'],
-      (object)['id' => '2', 'content' => '目立った傷や汚れなし'],
-      (object)['id' => '3', 'content' => 'やや傷や汚れあり'],
-      (object)['id' => '4', 'content' => '状態が悪い'],
-    ]);
+    $conditions = [
+      '良好',
+      '目立った傷や汚れなし',
+      'やや傷や汚れあり',
+      '状態が悪い',
+    ];
 
     return view('item_sell', compact('categories', 'conditions'));
   }
@@ -44,10 +45,7 @@ class ItemController extends Controller
   public function purchase($item_id)
   {
     $item = Item::findOrFail($item_id);
-    return view(
-      'item_purchase',
-      compact('item')
-    );
+    return view('item_purchase', compact('item'));
   }
 
   public function address($item_id)
@@ -56,18 +54,8 @@ class ItemController extends Controller
     return view('address_edit', compact('item'));
   }
 
-  public function store(Request $request)
+  public function store(ExhibitionRequest $request)
   {
-
-    $request->validate([
-      'name' => ['required'],
-      'price' => ['required', 'numeric', 'min:0'],
-      'description' => ['required', 'max:255'],
-      'img_url' => ['required', 'image'],
-      'category_ids' => ['required', 'array'],
-      'condition' => ['required'],
-    ]);
-
     $path = $request->file('img_url')->store('items', 'public');
 
     $item = Item::create([
@@ -80,7 +68,8 @@ class ItemController extends Controller
       'img_url' => $path,
     ]);
 
-    $item->categories()->sync($request->category_ids);
+    $item->categories()->sync($request->category_id);
+
     return redirect()->route('item.index');
   }
 }

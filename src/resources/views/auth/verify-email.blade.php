@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+<link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+@endsection
+
 @section('content')
 <div class="verify-email">
   <div class="verify-email__inner">

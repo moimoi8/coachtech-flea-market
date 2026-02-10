@@ -5,6 +5,11 @@
 <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
 @endsection
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/item.css') }}">
+<link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+@endsection
+
 @section('content')
 <div class="item-detail">
   <div class="item-detail__inner">

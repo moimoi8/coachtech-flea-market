@@ -24,7 +24,7 @@ class ProfileRequest extends FormRequest
   public function rules()
   {
     return [
-      'img_url' => ['nullable', 'image', 'mimes:jpeg,png', 'max:2048'],
+      'profile_url' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
       'name' => ['required', 'string', 'max:20'],
       'postal_code' => ['required', 'string', 'regex:/^\d{3}-\d{4}$/'],
       'address' => ['required', 'string', 'max:255'],
@@ -35,7 +35,7 @@ class ProfileRequest extends FormRequest
   public function messages()
   {
     return [
-      'img_url' => '画像ファイルはjpegまたはpng形式でアップロードしてください',
+      'profile_url' => '画像ファイルはjpegまたはpng形式でアップロードしてください',
       'name.required' => 'お名前を入力してください',
       'name.max' => 'お名前は20文字以内で入力してください',
       'postal_code.required' => '郵便番号を入力してください',

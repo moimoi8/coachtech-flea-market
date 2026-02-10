@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('css')
+<link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+<link rel="stylesheet" href="{{ asset('css/item.css') }}">
+<link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+@endsection
+
+@section('css')
 <link rel="stylesheet" href="{{ asset('css/item.css') }}">
 <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
 @endsection

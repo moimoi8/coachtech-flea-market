@@ -30,16 +30,16 @@
       <nav class="header__nav">
         <ul class="header__nav-list">
           <li class="header__nav-item">
-            <a href="/logout" class="header__nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a>
-            <form id="logout-form" action="/logout" method="POST" style="display: none">
+            <a href="{{ route('logout') }}" class="header__nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
               @csrf
             </form>
           </li>
           <li class="header__nav-item">
-            <a href="/mypage" class="header__nav-link">マイページ</a>
+            <a href="{{ route('mypage.index') }}" class="header__nav-link">マイページ</a>
           </li>
           <li class="header__nav-item">
-            <a href="/sell" class="c-button c-button--header-sell">出品</a>
+            <a href="{{ route('item.create') }}" class="c-button c-button--header-sell">出品</a>
           </li>
         </ul>
       </nav>

@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+<link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+@endsection
+
 @section('content')
 <div class="l-form-container register-form">
   <h2 class="c-form-heading register-form__heading">会員登録</h2>

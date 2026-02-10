@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Item;
@@ -15,7 +16,7 @@ class ProfileController extends Controller
     if (!$user) {
       return redirect()->route('login');
     }
-    $tab = $request->query('tab', 'sell');
+    $tab = $request->query('page', 'sell');
 
     if ($tab === 'buy') {
       $items = $user->boughtItems;
@@ -28,32 +29,27 @@ class ProfileController extends Controller
   public function edit()
   {
     $user = Auth::user();
-    return view('profile_setup', compact('user'));
+    return view('auth.profile_setup', compact('user'));
   }
 
-  public function update(Request $request)
+  public function update(ProfileRequest $request)
   {
-    $request->validate([
-      'name' => ['required'],
-      'postal_code' => ['required', 'regex:/^\d{3}-\d{4}$/'],
-      'address' => ['required'],
-      'building' => ['nullable'],
-      'img_url' => ['nullable', 'image'],
-    ]);
-
     $user = Auth::user();
 
-    if ($request->hasFile('img_url')) {
-      $path = $request->file('img_url')->store('profiles', 'public');
-      $user->img_url = $path;
-    }
-
-    $user->update([
+    $data = [
       'name' => $request->name,
       'postal_code' => $request->postal_code,
       'address' => $request->address,
       'building' => $request->building,
-    ]);
-    return redirect()->route('mypage.index')->with('message', 'プロフィールを更新しました');
+    ];
+
+    if ($request->hasFile('profile_url')) {
+      $path = $request->file('profile_url')->store('profiles', 'public');
+      $data['profile_url'] = $path;
+    }
+
+    $user->fill($data)->save();
+
+    return redirect()->route('item.index')->with('message', 'プロフィールを更新しました');
   }
 }

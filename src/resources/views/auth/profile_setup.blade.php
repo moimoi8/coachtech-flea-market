@@ -1,18 +1,29 @@
 @extends('layouts.app')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+<link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+@endsection
+
 @section('content')
 <div class="l-form-container profile-setup">
   <h2 class="c-form-heading profile-setup__heading">プロフィール設定</h2>
 
   <div class="profile-setup__inner">
-    <form class="profile-setup__form" action="/mypage/profile" method="POST" enctype="multipart/form-data">
+    <form class="profile-setup__form" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
       @csrf
 
       <div class="profile-setup__image-group">
-        <div class="profile-setup__image-preview"></div>
+        <div class="profile-setup__image-preview">
+          @if($user->profile_url)
+          <img src="{{ asset('storage/' . $user->profile_url) }}" alt="プロフィール画像" id="profile-img-preview" class="profile-setup__image">
+          @else
+          <div class="profile-setup__image-default"></div>
+          @endif
+        </div>
         <label class="c-form-label profile-setup__image-label">
           画像を選択する
-          <input type="file" name="image" class="profile-setup__image-input" style="display:none">
+          <input type="file" name="profile_url" id="profile_url" class="profile-setup__image-input" style="display:none">
         </label>
       </div>
 
