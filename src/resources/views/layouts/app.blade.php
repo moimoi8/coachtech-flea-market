@@ -22,8 +22,9 @@
       </div>
 
       <div class="header__search">
-        <form action="/search" method="GET" class="header__search-form">
-          <input type="text" name="keyword" class="header__search-input" placeholder="なにをお探しですか？">
+        <form action="/" method="GET" class="header__search-form">
+          <input type="hidden" name="tab" value="{{ $tab ?? 'recommend' }}">
+          <input type="text" name="keyword" class="header__search-input" placeholder="なにをお探しですか？" value="{{ $keyword ?? '' }}">
         </form>
       </div>
 

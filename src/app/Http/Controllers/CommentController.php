@@ -18,6 +18,6 @@ class CommentController extends Controller
       'comment' => $request->comment,
     ]);
 
-    return back()->with('message', 'コメントを投稿しました');
+    return back()->with('success', 'コメントを投稿しました');
   }
 }

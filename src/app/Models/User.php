@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Item;
+use App\Models\Order;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -57,6 +59,18 @@ class User extends Authenticatable implements MustVerifyEmail
     return $this->hasMany(Order::class);
   }
 
+  public function orderedItems()
+  {
+    return $this->hasManyThrough(
+      Item::class,
+      Order::class,
+      'user_id',
+      'id',
+      'id',
+      'item_id',
+    );
+  }
+
   public function comments()
   {
     return $this->hasMany(Comment::class);
@@ -65,5 +79,10 @@ class User extends Authenticatable implements MustVerifyEmail
   public function likes()
   {
     return $this->hasMany(Like::class);
+  }
+
+  public function likeItems()
+  {
+    return $this->belongsToMany(Item::class, 'likes', 'user_id', 'item_id')->withTimestamps();
   }
 }

@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +32,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
   Route::post('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
 
-  Route::get('/purchase/{item_id}', [ItemController::class, 'purchase'])->name('item.purchase');
+  Route::get('/purchase/{item_id}', [ItemController::class, 'purchase'])->name('item.purchase.view');
+
+  Route::post('/purchase/{item_id}', [ItemController::class, 'purchaseStore'])->name('item.purchase');
 
   Route::get('/purchase/address/{item_id}', [ItemController::class, 'address'])->name('item.address.edit');
 
@@ -39,4 +43,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
   Route::get('/sell', [ItemController::class, 'create'])->name('item.create');
 
   Route::post('/sell', [ItemController::class, 'store'])->name('item.store');
+
+  Route::post('/item/{item_id}/like', [LikeController::class, 'store'])->name('like.store');
+
+  Route::post('/item/{item_id}/comment', [CommentController::class, 'store'])->name('comment.store');
 });

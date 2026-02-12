@@ -10,9 +10,8 @@
   <h2 class="c-form-heading address-edit__heading">住所の変更</h2>
 
   <div class="address-edit__inner">
-    <form action="{{ route('address.update') }}" class="address-edit__form" method="POST">
+    <form action="{{ route('item.address.update', ['item_id' => $item->id]) }}" class="address-edit__form" method="POST">
       @csrf
-      @method('PATCH')
 
       <div class="address-edit__group">
         <label class="c-form-label address-edit__label" for="postal_code">郵便番号</label>

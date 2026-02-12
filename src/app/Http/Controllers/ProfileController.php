@@ -19,7 +19,7 @@ class ProfileController extends Controller
     $tab = $request->query('page', 'sell');
 
     if ($tab === 'buy') {
-      $items = $user->boughtItems;
+      $items = $user->orderedItems;
     } else {
       $items = Item::where('user_id', $user->id)->get();
     }

@@ -2,31 +2,47 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddressRequest;
 use App\Models\Category;
 use App\Models\Item;
 use App\Http\Requests\ExhibitionRequest;
+use App\Http\Requests\PurchaseRequest;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller
 {
   public function index(Request $request)
   {
     $tab = $request->query('tab', 'recommend');
+    $keyword = $request->query('keyword');
+    $query = Item::query()->with('categories');
+
+    if ($keyword) {
+      $query->where('name', 'like', '%' . $keyword . '%');
+    }
 
     if ($tab === 'mylist') {
       $items = auth()->check()
-        ? auth()->user()->likeItems()->with('categories')->get()
+        ? auth()->user()->likeItems()->whereIn('item.id', $query->pluck('id'))->get()
         : collect();
     } else {
-      $items = Item::with('categories')->get();
+      $items = $query->get();
     }
-    return view('index', compact('items', 'tab'));
+    return view('index', compact('items', 'tab', 'keyword'));
   }
 
   public function show($item_id)
   {
     $item = Item::with(['categories', 'comments.user'])->withCount('likes')->findOrFail($item_id);
-    return view('item_detail', compact('item'));
+
+    $is_liked = false;
+    if (auth()->check()) {
+      $is_liked = auth()->user()->likeItems()->where('item_id', $item_id)->exists();
+    }
+
+    return view('item_detail', compact('item', 'is_liked'));
   }
 
   public function create()
@@ -45,13 +61,56 @@ class ItemController extends Controller
   public function purchase($item_id)
   {
     $item = Item::findOrFail($item_id);
-    return view('item_purchase', compact('item'));
+    $user = auth()->user();
+
+    return view('item_purchase', compact('item', 'user'));
   }
 
   public function address($item_id)
   {
     $item = Item::findOrFail($item_id);
-    return view('address_edit', compact('item'));
+    $user = auth()->user();
+
+    return view('address_edit', compact('item', 'user'));
+  }
+
+  public function addressUpdate(AddressRequest $request, $item_id)
+  {
+    $user = auth()->user();
+    $user->update([
+      'postal_code' => $request->postal_code,
+      'address' => $request->address,
+      'building' => $request->building,
+    ]);
+
+    return redirect()->route('item.purchase', ['item_id' => $item_id])
+      ->with('message', '配送先を変更しました');
+  }
+
+  public function purchaseStore(PurchaseRequest $request, $item_id)
+  {
+    $user = auth()->user();
+    $item = Item::findOrFail($item_id);
+
+    if ($item->is_sold) {
+      return back()->with('error', 'この商品はすでに売り切れています');
+    }
+
+    \DB::transaction(function () use ($request, $user, $item) {
+      Order::create([
+        'user_id' => $user->id,
+        'item_id' => $item->id,
+        'payment_method' => $request->payment_method,
+        'postal_code' => $request->postal_code,
+        'address' => $request->address,
+        'building' => $request->building,
+        'stripe_checkout_id' => 'dummy_id',
+      ]);
+      $item->update(['is_sold' => true]);
+    });
+
+    return redirect()->route('item.show', ['item_id' => $item->id])
+      ->with('message', '商品を購入しました');
   }
 
   public function store(ExhibitionRequest $request)

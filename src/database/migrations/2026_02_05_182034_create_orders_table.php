@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
       $table->string('postal_code');
       $table->string('address');
       $table->string('building')->nullable();
-      $table->string('stripe_checkout_id');
+      $table->string('stripe_checkout_id')->nullable();
       $table->timestamps();
     });
   }

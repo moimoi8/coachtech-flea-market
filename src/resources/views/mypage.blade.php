@@ -26,7 +26,7 @@
 
     <nav class="mypage__tabs">
       <div class="mypage__tab-group">
-        <a href="mypage?page=sell" class="mypage__tab-item {{ request('page') != 'buy' ? 'mypage__tab-item--active' : '' }}">出品した商品
+        <a href="/mypage?page=sell" class="mypage__tab-item {{ request('page') != 'buy' ? 'mypage__tab-item--active' : '' }}">出品した商品
         </a>
         <a href="/mypage?page=buy" class="mypage__tab-item {{ request('page') == 'buy' ? 'mypage__tab-item--active' : '' }}">購入した商品
         </a>
@@ -38,7 +38,7 @@
       <article class="item-list__card">
         <a href="{{ route('item.show', ['item_id' => $item->id]) }}" class="item-list__card-link">
           <div class="item-list__image-wrap">
-            <img src="{{ asset('storage/' . $item->img_url) }}" alt="{{ $item->name }}" class="item-list__img">
+            <img src="{{ asset($item->img_url) }}" alt="{{ $item->name }}" class="item-list__img">
           </div>
           <div class="item-list__card-info">
             <p class="item-list__item-name">{{ $item->name }}</p>
