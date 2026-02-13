@@ -51,7 +51,7 @@
             <select name="condition" id="condition" class="item-sell__select">
               <option value="" selected disabled>選択してください</option>
               @foreach($conditions as $condition)
-              <option value="{{ $condition->id }}">{{ $condition->content }}</option>
+              <option value="{{ $condition }}">{{ $condition }}</option>
               @endforeach
             </select>
           </div>

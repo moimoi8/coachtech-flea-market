@@ -10,7 +10,7 @@
   <h2 class="c-form-heading register-form__heading">会員登録</h2>
 
   <div class="register-form__inner">
-    <form action="/register" class="register-form__form" method="POST">
+    <form action="/register" class="register-form__form" method="POST" novalidate>
       @csrf
 
       <div class="register-form__group">

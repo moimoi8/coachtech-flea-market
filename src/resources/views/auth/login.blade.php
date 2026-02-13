@@ -10,7 +10,7 @@
   <h2 class="c-form-heading login-form__heading">ログイン</h2>
 
   <div class="login-form__inner">
-    <form action="/login" class="login-form__form" method="POST">
+    <form action="/login" class="login-form__form" method="POST" novalidate>
       @csrf
 
       <div class="login-form__group">
@@ -27,7 +27,7 @@
         <label class="c-form-label login-form__label" for="password">パスワード</label>
         <input class="c-form-input login-form__input" type="password" name="password" id="password" value="{{ old('password') }}">
         <p class="c-form-error">
-          @error('email')
+          @error('password')
           {{ $message }}
           @enderror
         </p>

@@ -10,6 +10,8 @@ use App\Http\Requests\PurchaseRequest;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Stripe\Stripe;
+use Stripe\Checkout\Session;
 
 class ItemController extends Controller
 {
@@ -25,7 +27,7 @@ class ItemController extends Controller
 
     if ($tab === 'mylist') {
       $items = auth()->check()
-        ? auth()->user()->likeItems()->whereIn('item.id', $query->pluck('id'))->get()
+        ? auth()->user()->likeItems()->whereIn('items.id', $query->pluck('id'))->get()
         : collect();
     } else {
       $items = $query->get();
@@ -96,6 +98,27 @@ class ItemController extends Controller
       return back()->with('error', 'この商品はすでに売り切れています');
     }
 
+    \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+    $session = \Stripe\Checkout\Session::create([
+      'payment_method_types' => ['card', 'konbini'],
+      'line_items' => [[
+        'price_data' => [
+          'currency' => 'jpy',
+          'product_data' => [
+            'name' => $item->name,
+          ],
+          'unit_amount' => $item->price,
+        ],
+        'quantity' => 1,
+      ]],
+      'mode' => 'payment',
+      'success_url' => route('item.purchase.success', ['item_id' => $item->id]),
+      'cancel_url' => route('item.show', ['item_id' => $item->id]),
+    ]);
+
+    return redirect($session->url, 303);
+
     \DB::transaction(function () use ($request, $user, $item) {
       Order::create([
         'user_id' => $user->id,
@@ -111,6 +134,31 @@ class ItemController extends Controller
 
     return redirect()->route('item.show', ['item_id' => $item->id])
       ->with('message', '商品を購入しました');
+  }
+
+  public function purchaseSuccess(Request $request, $item_id)
+  {
+    $user = auth()->user();
+    $item = Item::findOrFail($item_id);
+
+    if ($item->is_sold) {
+      return redirect()->route('item.index');
+    }
+
+    \DB::transaction(function () use ($user, $item) {
+      Order::create([
+        'user_id' => $user->id,
+        'item_id' => $item->id,
+        'stripe_checkout_id' => 'completed',
+        'payment_method' => 'stripe',
+        'postal_code' => $user->postal_code ?? '000-0000',
+        'address' => $user->address ?? '未設定',
+      ]);
+
+      $item->update(['is_sold' => true]);
+    });
+
+    return redirect()->route('item.index')->with('message', '購入が完了しました！');
   }
 
   public function store(ExhibitionRequest $request)

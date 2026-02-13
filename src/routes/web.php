@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,4 +49,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
   Route::post('/item/{item_id}/like', [LikeController::class, 'store'])->name('like.store');
 
   Route::post('/item/{item_id}/comment', [CommentController::class, 'store'])->name('comment.store');
+
+  Route::get('/purchase/success/{item_id}', [ItemController::class, 'purchaseSuccess'])->name('item.purchase.success');
 });
+
+Route::get('/register', [RegisterController::class, 'create'])->name('register');
+
+Route::post('/register', [RegisterController::class, 'store']);
+
+Route::get('/login', [LoginController::class, 'create'])->name('login');
+
+Route::post('/login', [LoginController::class, 'store']);
+
+Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
