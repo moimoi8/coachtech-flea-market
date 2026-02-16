@@ -22,6 +22,7 @@
         <a href="{{ route('item.show', ['item_id' => $item->id]) }}" class="item-list__card-link">
           <div class="item-list__image-wrap">
             <img src="{{ $item->img_url }}" alt="{{ $item->name }}" class="item-list__img">
+
             @if($item->is_sold)
             <span class="item-list__sold-label">SOLD</span>
             @endif

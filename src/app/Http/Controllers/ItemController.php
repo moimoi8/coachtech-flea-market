@@ -159,7 +159,7 @@ class ItemController extends Controller
       'img_url' => $path,
     ]);
 
-    $item->categories()->sync($request->category_id);
+    $item->categories()->sync($request->category_ids);
 
     return redirect()->route('item.index');
   }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Dotenv\Parser\Value;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -47,5 +48,17 @@ class Item extends Model
   public function getFormattedPriceAttribute()
   {
     return number_format($this->price);
+  }
+
+  public function getImgUrlAttribute($value)
+  {
+    if (empty($value)) {
+      return asset('img/no-image.png');
+    }
+
+    if (str_starts_with($value, 'http')) {
+      return $value;
+    }
+    return asset('storage/' . $value);
   }
 }

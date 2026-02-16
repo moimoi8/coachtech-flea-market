@@ -17,7 +17,7 @@
 
       <div class="item-purchase__item-section">
         <div class="item-purchase__item-image">
-          <img src="{{ $item->img_url }}" alt="{{ $item->name }}">
+          <img src="{{ $item->img_url }}" alt="{{ $item->name }}" class="item-purchase_img">
         </div>
         <div class="item-purchase__item-detail">
           <h1 class="item-purchase__item-name">{{ $item->name }}</h1>

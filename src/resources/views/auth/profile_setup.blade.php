@@ -21,7 +21,7 @@
           <div class="profile-setup__image-default"></div>
           @endif
         </div>
-        <label class="c-form-label profile-setup__image-label">
+        <label class="c-btn-outline profile-setup__image-label">
           画像を選択する
           <input type="file" name="profile_url" id="profile_url" class="profile-setup__image-input" style="display:none">
         </label>
@@ -66,4 +66,31 @@
     </form>
   </div>
 </div>
+
+<script>
+  document.getElementById('profile_url').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+      const preview = document.getElementById('profile-img-preview');
+      if (preview) {
+        preview.src = e.target.result;
+      } else {
+        const defaultBox = document.querySelector('.profile-setup__image-default');
+        if (defaultBox) {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          img.id = 'profile-img-preview';
+          img.className = 'profile-setup__image';
+          defaultBox.replaceWith(img);
+        }
+      }
+    }
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  });
+</script>
 @endsection

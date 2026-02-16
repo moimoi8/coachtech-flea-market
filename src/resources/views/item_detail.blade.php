@@ -47,7 +47,11 @@
       </div>
     </div>
     <div class="item-detail_purchase">
+      @if($item->is_sold)
+      <button class="c-button item_detail__buy-button is_sold" disabled style="background-color: #888; cursor: not-allowed;">売り切れました</button>
+      @else
       <a href="{{ route('item.purchase', ['item_id' => $item->id]) }}" class="c-button  item-detail__buy-button">購入手続きへ</a>
+      @endif
     </div>
 
     <div class="item-detail__section">
