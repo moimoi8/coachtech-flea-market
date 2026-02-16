@@ -13,15 +13,12 @@ class ProfileController extends Controller
   {
     $user = Auth::user();
 
-    if (!$user) {
-      return redirect()->route('login');
-    }
     $tab = $request->query('page', 'sell');
 
     if ($tab === 'buy') {
       $items = $user->orderedItems;
     } else {
-      $items = Item::where('user_id', $user->id)->get();
+      $items = $user->items;
     }
     return view('mypage', compact('user', 'items', 'tab'));
   }

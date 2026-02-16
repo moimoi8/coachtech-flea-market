@@ -9,12 +9,9 @@ class LikeController extends Controller
   public function store($item_id)
   {
     $user = auth()->user();
-    $like = $user->likeItems()->where('item_id', $item_id)->first();
-    if ($like) {
-      $user->likeItems()->detach($item_id);
-    } else {
-      $user->likeItems()->attach($item_id);
-    }
+
+    $user->likeItems()->toggle($item_id);
+
     return back();
   }
 }

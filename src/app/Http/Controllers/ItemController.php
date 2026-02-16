@@ -98,9 +98,9 @@ class ItemController extends Controller
       return back()->with('error', 'この商品はすでに売り切れています');
     }
 
-    \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+    Stripe::setApiKey(config('services.stripe.secret'));
 
-    $session = \Stripe\Checkout\Session::create([
+    $session = Session::create([
       'payment_method_types' => ['card', 'konbini'],
       'line_items' => [[
         'price_data' => [
@@ -118,22 +118,6 @@ class ItemController extends Controller
     ]);
 
     return redirect($session->url, 303);
-
-    \DB::transaction(function () use ($request, $user, $item) {
-      Order::create([
-        'user_id' => $user->id,
-        'item_id' => $item->id,
-        'payment_method' => $request->payment_method,
-        'postal_code' => $request->postal_code,
-        'address' => $request->address,
-        'building' => $request->building,
-        'stripe_checkout_id' => 'dummy_id',
-      ]);
-      $item->update(['is_sold' => true]);
-    });
-
-    return redirect()->route('item.show', ['item_id' => $item->id])
-      ->with('message', '商品を購入しました');
   }
 
   public function purchaseSuccess(Request $request, $item_id)
@@ -145,7 +129,7 @@ class ItemController extends Controller
       return redirect()->route('item.index');
     }
 
-    \DB::transaction(function () use ($user, $item) {
+    DB::transaction(function () use ($user, $item) {
       Order::create([
         'user_id' => $user->id,
         'item_id' => $item->id,
