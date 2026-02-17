@@ -16,28 +16,25 @@
       <div class="address-edit__group">
         <label class="c-form-label address-edit__label" for="postal_code">郵便番号</label>
         <input class="c-form-input address-edit__input" type="text" name="postal_code" value="{{ old('postal_code', $user->postal_code) }}">
-        <p class="c-form-error">
-          @error('postal_code')
-          {{ $message }}
-          @enderror
-        </p>
+        @error('postal_code')
+        <p class="c-form-error">{{ $message }}</p>
+        @enderror
       </div>
 
       <div class="address-edit__group">
         <label class="c-form-label address-edit__label" for="address">住所</label>
-        <input class="c-form-input address-edit__input" type="text" name="address" id="address" value="{{ old('address') }}">
-        <p class="c-form-error">
-          @error('address')
-          {{ $message }}
-          @enderror
-        </p>
+        <input class="c-form-input address-edit__input" type="text" name="address" id="address" value="{{ old('address', $user->address) }}">
+        @error('address')
+        <p class="c-form-error">{{ $message }}</p>
+        @enderror
       </div>
 
       <div class="address-edit__group">
         <label class="c-form-label address-edit__label" for="building">建物名</label>
-        <input class="c-form-input address-edit__input" type="text" name="building" id="building" value="{{ old('building') }}">
-        <p class="c-form-error">
-        </p>
+        <input class="c-form-input address-edit__input" type="text" name="building" id="building" value="{{ old('building', $user->building) }}">
+        @error('building')
+        <p class="c-form-error">{{ $message }}</p>
+        @enderror
       </div>
 
       <div class="address-edit__btn-wrap">

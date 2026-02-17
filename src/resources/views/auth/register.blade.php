@@ -10,37 +10,35 @@
   <h2 class="c-form-heading register-form__heading">会員登録</h2>
 
   <div class="register-form__inner">
-    <form action="/register" class="register-form__form" method="POST" novalidate>
+    <form action="{{ route('register') }}" class="register-form__form" method="POST" novalidate>
       @csrf
 
       <div class="register-form__group">
         <label class="c-form-label register-form__label" for="name">ユーザー名</label>
         <input class="c-form-input register-form__input" type="text" name="name" id="name" value="{{ old('name') }}">
-        <p class="c-form-error">
-          @error('name')
-          {{ $message }}
-          @enderror
-        </p>
+        @error('name')
+        <p class="c-form-error">{{ $message }}</p>
+        @enderror
+
       </div>
 
       <div class="register-form__group">
         <label class="c-form-label register-form__label" for="email">メールアドレス</label>
         <input class="c-form-input register-form__input" type="email" name="email" id="email" value="{{ old('email') }}">
-        <p class="c-form-error">
-          @error('email')
-          {{ $message }}
-          @enderror
-        </p>
+
+        @error('email')
+        <p class="c-form-error">{{ $message }}</p>
+        @enderror
+
       </div>
 
       <div class="register-form__group">
         <label class="c-form-label register-form__label" for="password">パスワード</label>
         <input class="c-form-input register-form__input" type="password" name="password" id="password">
-        <p class="c-form-error">
-          @error('password')
-          {{ $message }}
-          @enderror
-        </p>
+
+        @error('password')
+        <p class="c-form-error">{{ $message }}</p>
+        @enderror
       </div>
 
       <div class="register-form__group">
@@ -54,7 +52,7 @@
     </form>
 
     <div class="register-form__link">
-      <a href="/login">ログインはこちら</a>
+      <a href="{{ route('login') }}">ログインはこちら</a>
     </div>
   </div>
 </div>

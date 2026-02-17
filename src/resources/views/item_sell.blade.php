@@ -6,11 +6,6 @@
 <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
 @endsection
 
-@section('css')
-<link rel="stylesheet" href="{{ asset('css/item.css') }}">
-<link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-@endsection
-
 @section('content')
 <div class="l-form-container item-sell">
   <div class="item-sell__inner">

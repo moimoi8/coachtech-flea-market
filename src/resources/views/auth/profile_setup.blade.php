@@ -29,35 +29,32 @@
 
       <div class="profile-setup__group profile-setup__group--username">
         <label class="c-form-label profile-setup__label" for="name">ユーザー名</label>
-        <input class="c-form-input profile-setup__input" type="text" name="name" id="name" value="{{ old('name') }}">
-        <p class="c-form-error">
-          @error('name')
-          {{ $message }}
-          @enderror
-        </p>
+        <input class="c-form-input profile-setup__input" type="text" name="name" id="name" value="{{ old('name', $user->name) }}">
+        @error('name')
+        <p class="c-form-error">{{ $message }}</p>
+        @enderror
+
       </div>
 
       <div class="profile-setup__group">
         <label class="c-form-label profile-setup__label" for="postal_code">郵便番号</label>
-        <input class="c-form-input profile-setup__input" type="text" name="postal_code" id="postal_code" value="{{ old('postal_code')}}">
-        <p class="c-form-error">
-          @error('postal_code')
-          {{ $message }}
-          @enderror
+        <input class="c-form-input profile-setup__input" type="text" name="postal_code" id="postal_code" value="{{ old('postal_code', $user->postal_code) }}">
+        @error('postal_code')
+        <p class="c-form-error">{{ $message }}</p>
+        @enderror
       </div>
 
       <div class="profile-setup__group">
         <label class="c-form-label profile-setup__label" for="address">住所</label>
-        <input class="c-form-input profile-setup__input" type="text" name="address" id="address" value="{{ old('address')}}">
-        <p class="c-form-error">
-          @error('address')
-          {{ $message }}
-          @enderror
+        <input class="c-form-input profile-setup__input" type="text" name="address" id="address" value="{{ old('address', $user->address) }}">
+        @error('address')
+        <p class="c-form-error">{{ $message }}</p>
+        @enderror
       </div>
 
       <div class="profile-setup__group">
         <label class="c-form-label profile-setup__label" for="building">建物名</label>
-        <input class="c-form-input profile-setup__input" type="text" name="building" id="building" value="{{ old('building')}}">
+        <input class="c-form-input profile-setup__input" type="text" name="building" id="building" value="{{ old('building', $user->building) }}">
       </div>
 
       <div class="profile-setup__btn-wrap">

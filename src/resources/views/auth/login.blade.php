@@ -10,27 +10,24 @@
   <h2 class="c-form-heading login-form__heading">ログイン</h2>
 
   <div class="login-form__inner">
-    <form action="/login" class="login-form__form" method="POST" novalidate>
+    <form action="{{ route('login') }}" class="login-form__form" method="POST" novalidate>
       @csrf
 
       <div class="login-form__group">
         <label class="c-form-label login-form__label" for="email">メールアドレス</label>
         <input class="c-form-input login-form__input" type="email" name="email" id="email" value="{{ old('email') }}">
-        <p class="c-form-error">
-          @error('email')
-          {{ $message }}
-          @enderror
-        </p>
+        @error('email')
+        <p class="c-form-error">{{ $message }}</p>
+        @enderror
       </div>
 
       <div class="login-form__group">
         <label class="c-form-label login-form__label" for="password">パスワード</label>
-        <input class="c-form-input login-form__input" type="password" name="password" id="password" value="{{ old('password') }}">
-        <p class="c-form-error">
-          @error('password')
-          {{ $message }}
-          @enderror
-        </p>
+        <input class="c-form-input login-form__input" type="password" name="password" id="password">
+        @error('password')
+        <p class="c-form-error">{{ $message }}</p>
+        @enderror
+
       </div>
 
       <div class="login-form__btn-wrap">
@@ -39,7 +36,7 @@
     </form>
 
     <div class="login-form__link">
-      <a href="/register">会員登録はこちら</a>
+      <a href="{{ route('register') }}">会員登録はこちら</a>
     </div>
   </div>
 </div>

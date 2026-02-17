@@ -17,7 +17,7 @@
     </div>
 
     <div class="verify-email__btn-wrap">
-      <button class="verify-email__btn-confirm">認証はこちらから</button>
+      <a href="http://localhost:8025" class="verify-email__btn-confirm" target="_blank">認証はこちらから</a>
     </div>
 
     <div class="verify-email__resend">

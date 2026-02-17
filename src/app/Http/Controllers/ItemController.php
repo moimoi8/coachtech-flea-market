@@ -17,9 +17,14 @@ class ItemController extends Controller
 {
   public function index(Request $request)
   {
+
     $tab = $request->query('tab', 'recommend');
     $keyword = $request->query('keyword');
     $query = Item::query()->with('categories');
+
+    if (auth()->check()) {
+      $query->where('user_id', '!=', auth()->id());
+    }
 
     if ($keyword) {
       $query->where('name', 'like', '%' . $keyword . '%');

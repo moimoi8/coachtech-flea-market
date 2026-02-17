@@ -11,7 +11,7 @@
 
     <nav class="item-list__tabs">
       <div class="item-list__tab-group">
-        <a href="{{ route('item.index', ['keyword' => $keyword ?? '']) }}" class="item-list__tab-item {{ $tab !== 'mylist' ? 'item-list__tab-item--active' : '' }}">おすすめ</a>
+        <a href="{{ route('item.index', ['tab' => 'recommend', 'keyword' => $keyword ?? '']) }}" class="item-list__tab-item {{ $tab !== 'mylist' ? 'item-list__tab-item--active' : '' }}">おすすめ</a>
         <a href="{{ route('item.index', ['tab' => 'mylist', 'keyword' => $keyword ?? '']) }}" class="item-list__tab-item {{ $tab === 'mylist' ? 'item-list__tab-item--active' : '' }}">マイリスト</a>
       </div>
     </nav>

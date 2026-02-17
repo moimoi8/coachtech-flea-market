@@ -5,11 +5,6 @@
 <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
 @endsection
 
-@section('css')
-<link rel="stylesheet" href="{{ asset('css/item.css') }}">
-<link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-@endsection
-
 @section('content')
 <div class="item-purchase">
   <div class="item-purchase__inner">
@@ -51,15 +46,6 @@
     </div>
 
     <aside class="item-purchase__summary">
-      @if ($errors->any())
-      <div style="background: #ffdada; padding: 10px; margin-bottom: 10px;">
-        <ul>
-          @foreach ($errors->all() as $error)
-          <li class="c-form-error">{{ $error }}</li>
-          @endforeach
-        </ul>
-      </div>
-      @endif
       <div
         class="item-purchase__summary-board">
         <div class="item-purchase__summary-row">
@@ -82,9 +68,9 @@
       <form id="purchase-form" action="{{ route('item.purchase', ['item_id' => $item->id]) }}" method="POST">
         @csrf
         <input type="hidden" name="payment_method" id="hidden-payment-method" value="{{ old('payment_method') }}">
-        <input type="hidden" name="postal_code" value="{{ $user->postal_code }}">
-        <input type="hidden" name="address" value="{{ $user->address }}">
-        <input type="hidden" name="building" value="{{ $user->building }}">
+        <input type="hidden" name="postal_code" value="{{ old('postal_code', $user->postal_code) }}">
+        <input type="hidden" name="address" value="{{ old('address', $user->address) }}">
+        <input type="hidden" name="building" value="{{ old('building', $user->building) }}">
 
         <button type="submit" class="c-btn-submit item-purchase__btn-submit">購入する</button>
       </form>
