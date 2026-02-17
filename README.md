@@ -60,6 +60,7 @@ docker-compose exec php php artisan storage:link
 
 ## 動作確認URL
 アプリケーション本体: http://localhost/
+メール確認（Mailhog）: http://localhost:8025/
 
 ## テストの実行方法
 docker-compose exec php php artisan test
