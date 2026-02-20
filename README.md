@@ -38,6 +38,7 @@ cp src/.env.example src/.env
 
 STRIPE_PUBLIC_KEY（Stripeの公開可能キー）
 STRIPE_SECRET_KEY（Stripeのシークレットキー）
+MAIL_FROM_ADDRESS=admin@example.com（送信元メールアドレス）
 
 ### 3. コンテナの起動
 docker-compose up -d --build
