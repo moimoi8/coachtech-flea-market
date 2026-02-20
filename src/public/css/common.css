@@ -53,6 +53,7 @@ body {
   border: 1px solid #5f5f5f;
   border-radius: 4px;
   box-sizing: border-box;
+  font-size: 24px;
 }
 
 .c-btn-submit {
@@ -73,7 +74,7 @@ body {
 
 .c-form-error {
   color: #ff0000;
-  font-size: 15px;
+  font-size: 16px;
   margin-top: 5px;
   margin-bottom: 0;
   min-height: 20px;

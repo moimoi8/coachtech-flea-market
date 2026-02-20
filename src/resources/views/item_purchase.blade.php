@@ -25,9 +25,9 @@
           <h2 class="item-purchase__label">支払い方法</h2>
         </div>
         <div class="c-select-wrap item-purchase__select-wrap">
-          <select class="item-purchase__select" id="payment-select">
+          <select class="item-purchase__select" id="payment-select" name="payment_method">
             <option value="" disabled {{ old('payment_method') === null ? 'selected' : '' }}>選択してください</option>
-            <option value="convenience" {{ old('payment_method') === 'convenience' ? 'selected' : '' }}>コンビニ払い</option>
+            <option value="konbini" {{ old('payment_method') === 'konbini' ? 'selected' : '' }}>コンビニ払い</option>
             <option value="card" {{ old('payment_method') === 'card' ? 'selected' : '' }}>カード払い</option>
           </select>
         </div>

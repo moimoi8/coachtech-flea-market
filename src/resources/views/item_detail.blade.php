@@ -80,7 +80,11 @@
         @foreach($item->comments as $comment)
         <div class="item-detail__comment">
           <div class="item-detail__comment-user">
-            <div class="item-detail__comment-avatar"></div>
+            <div class="item-detail__comment-avatar">
+              @if($comment->user->profile_url)
+              <img src="{{ asset('storage/' . $comment->user->profile_url) }}" alt="avatar" class="item-detail__comment-image">
+              @endif
+            </div>
             <strong class="item-detail__comment-name">{{ $comment->user->name }}</strong>
           </div>
           <p class="item-detail__comment-text">{{ $comment->comment }}</p>

@@ -22,4 +22,9 @@ class Like extends Model
   {
     return $this->belongsTo(Item::class);
   }
+
+  public function likeItems()
+  {
+    return $this->belongsToMany(Item::class, 'likes');
+  }
 }

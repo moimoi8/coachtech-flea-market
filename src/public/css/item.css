@@ -21,7 +21,7 @@
 .item-list__tab-item,
 .mypage__tab-item {
     text-decoration: none;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: bold;
     color: #333;
     margin-right: 100px;
@@ -79,7 +79,7 @@
     background-color: #ff4b4b;
     color: #fff;
     padding: 2px 15px;
-    font-size: 12px;
+    font-size: 18px;
 }
 
 .item-list__img {
@@ -90,7 +90,7 @@
 
 .item-list__item-name {
     margin-top: 5px;
-    font-size: 22px;
+    font-size: 25px;
     color: #000000;
     font-weight: 400;
 }
@@ -133,7 +133,7 @@
 }
 
 .item-detail__price {
-  font-size: 32px;
+  font-size: 45px;
   display: flex;
   align-items: baseline;
   margin: 32px 0 10px 0;
@@ -141,26 +141,26 @@
 }
 
 .item-detail__tax {
-  font-size: 18px;
+  font-size: 30px;
 }
 
 .item-detail__table-label {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
 }
 
 .item-detail__table-data {
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .item-detail__name {
-  font-size: 32px;
+  font-size: 45px;
   font-weight: bold;
   margin: 0 0 10px 0;
 }
 
 .item-detail__brand {
-  font-size: 16px;
+  font-size: 20px;
   margin-bottom: 25px;
 }
 
@@ -195,7 +195,7 @@
 }
 
 .item-detail__count {
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .item-detail__buy-button,
@@ -210,7 +210,7 @@
 }
 
 .item-detail__form-submit {
-  font-size: 26px;
+  font-size: 25px;
 }
 
 .item-detail__section {
@@ -218,7 +218,7 @@
 }
 
 .item-detail__section-title {
-  font-size: 28px;
+  font-size: 36px;
   font-weight: bold;
   padding-bottom: 8px;
   margin-bottom: 15px;
@@ -256,10 +256,21 @@
   height: 50px;
   background-color: #d9d9d9;
   border-radius: 50%;
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-detail__comment-image {
+  width: 100% ;
+  height: 100% ;
+  object-fit: cover;
 }
 
 .item-detail__comment-name {
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .item-detail__comment-text {
@@ -271,14 +282,14 @@
 }
 
 .item-detail__description {
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .item-detail__form-label {
   display: block;
   font-weight: bold;
   margin-bottom: 10px;
-  font-size: 24px;
+  font-size: 28px;
 }
 
 .item-detail__form-textarea {
@@ -289,7 +300,7 @@
   padding: 10px;
   box-sizing: border-box;
   margin-bottom: 20px;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .item-purchase__btn-submit {
@@ -327,7 +338,7 @@
   border-radius: 4px;
   padding: 15px;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 20px;
   background-color: #fff;
 }
 
@@ -520,7 +531,6 @@
 .item-purchase__summary {
   width: 440px;
   position: sticky;
-  /*top: 20px;*/
   margin-top: 0;
   margin-bottom: 50px;
 }

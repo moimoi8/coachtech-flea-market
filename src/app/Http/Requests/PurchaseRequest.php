@@ -24,7 +24,7 @@ class PurchaseRequest extends FormRequest
   public function rules()
   {
     return [
-      'payment_method' => ['required', 'string', 'in:convenience,card'],
+      'payment_method' => ['required', 'string', 'in:konbini,card'],
       'postal_code' => ['required', 'string', 'regex:/^\d{3}-\d{4}$/'],
       'address' => ['required', 'string', 'max:255'],
       'building' => ['nullable', 'string', 'max:255'],

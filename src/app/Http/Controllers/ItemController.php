@@ -32,7 +32,7 @@ class ItemController extends Controller
 
     if ($tab === 'mylist') {
       $items = auth()->check()
-        ? auth()->user()->likeItems()->whereIn('items.id', $query->pluck('id'))->get()
+        ? auth()->user()->likedItems()->whereIn('items.id', $query->pluck('id'))->get()
         : collect();
     } else {
       $items = $query->get();
@@ -46,7 +46,7 @@ class ItemController extends Controller
 
     $is_liked = false;
     if (auth()->check()) {
-      $is_liked = auth()->user()->likeItems()->where('item_id', $item_id)->exists();
+      $is_liked = auth()->user()->likedItems()->where('item_id', $item_id)->exists();
     }
 
     return view('item_detail', compact('item', 'is_liked'));
@@ -103,10 +103,12 @@ class ItemController extends Controller
       return back()->with('error', 'この商品はすでに売り切れています');
     }
 
+    $paymentMethod = $request->input('payment_method');
+
     Stripe::setApiKey(config('services.stripe.secret'));
 
     $session = Session::create([
-      'payment_method_types' => ['card', 'konbini'],
+      'payment_method_types' => [$paymentMethod],
       'line_items' => [[
         'price_data' => [
           'currency' => 'jpy',
@@ -120,6 +122,11 @@ class ItemController extends Controller
       'mode' => 'payment',
       'success_url' => route('item.purchase.success', ['item_id' => $item->id]),
       'cancel_url' => route('item.show', ['item_id' => $item->id]),
+      'payment_method_options' => [
+        'konbini' => [
+          'expires_after_days' => 3,
+        ],
+      ],
     ]);
 
     return redirect($session->url, 303);

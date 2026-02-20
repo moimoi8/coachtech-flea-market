@@ -10,7 +10,7 @@ class LikeController extends Controller
   {
     $user = auth()->user();
 
-    $user->likeItems()->toggle($item_id);
+    $user->likedItems()->toggle($item_id);
 
     return back();
   }
